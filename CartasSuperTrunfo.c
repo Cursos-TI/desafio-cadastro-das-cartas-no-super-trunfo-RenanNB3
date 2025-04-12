@@ -6,7 +6,7 @@ int main() {
     /* Carta 1 */
     char estado_carta1[20], codigo_carta1[4], cidade_carta1[20], estado_carta2[20], codigo_carta2[4], cidade_carta2[20];
     int populacao_carta1, pontosTuristicos_carta1, populacao_carta2, pontosTuristicos_carta2;
-    float pib_carta1, pib_carta2, area_carta1, area_carta2;
+    float pib_carta1, pib_carta2, area_carta1, area_carta2, densidade_carta1, densidade_carta2, pib_perCapita_carta1, pib_perCapita_carta2;
 
     printf("\nBem-vindo ao Super Trunfo! \nVamos começar criando suas cartas:\n");
     
@@ -43,6 +43,14 @@ int main() {
     printf("Digite a área da cidade em km²: ");
     scanf("%f", &area_carta2);
 
+    //Calculando a densidade populacional de cada carta
+    densidade_carta1 = populacao_carta1/area_carta1;
+    densidade_carta2 = populacao_carta2/area_carta2;
+ 
+    //Calculando o PIB per capita de cada carta
+    pib_perCapita_carta1 = pib_carta1/populacao_carta1;
+    pib_perCapita_carta2 = pib_carta2/populacao_carta2;
+
     /* Exibindo as cartas: */
 
     /* Carta 1 */
@@ -54,6 +62,8 @@ int main() {
     printf("Área: %.2f km²\n", area_carta1);
     printf("PIB: %.2f\n", pib_carta1);
     printf("Número de Pontos Turísticos: %d\n", pontosTuristicos_carta1);
+    printf("A densidade populacional referente a carta 1 é: %.2f\n", densidade_carta1);
+    printf("O PIB per capita da carta 1 é: %.2f\n", pib_perCapita_carta1);
 
     /* Carta 2 */
     printf("\nSegunda carta:\n");
@@ -64,6 +74,8 @@ int main() {
     printf("Área: %.2f km²\n", area_carta2);
     printf("PIB: %.2f\n", pib_carta2);
     printf("Número de Pontos Turísticos: %d\n", pontosTuristicos_carta2);
+    printf("A densidade populacional referente a carta 2 é: %.2f\n", densidade_carta2);
+    printf("O PIB per capita da carta 2 é: %.2f\n", pib_perCapita_carta2);
 
     return 0;
 }
