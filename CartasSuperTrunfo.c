@@ -106,7 +106,7 @@ int main() {
     //}
 
    /* Menu interativo utilizando Switch */
-
+  
    printf("\nEscolha qual atributo deve ser comparado:\n");
    printf("1 - População\n");
    printf("2 - PIB\n");
@@ -190,5 +190,129 @@ int main() {
       break;
     }
 
+  /*Implementando Comparações Avançadas com Atributos Múltiplos*/
+  char opcao1, opcao2;
+  int resultado1, resultado2;
+  float valor1_c1, valor1_c2, valor2_c1, valor2_c2;
+
+  printf("\n-- Comparando dois atributos das cartas --\n");
+  printf("Escolha o primeiro atributo a ser comparado:\n");
+  printf("A - População\nB - PIB\nC - Área\nD - Densidade Demográfica\nE - Pontos Turísticos\n> ");
+  scanf(" %c", &opcao1);
+
+  switch (opcao1) {
+    case 'A': 
+    case 'a':
+      resultado1 = populacao_carta1 > populacao_carta2 ? 1 : 0;
+      valor1_c1 = populacao_carta1;
+      valor1_c2 = populacao_carta2;
+      break;
+
+    case 'B': 
+    case 'b':
+      resultado1 = pib_carta1 > pib_carta2 ? 1 : 0;
+      valor1_c1 = pib_carta1;
+      valor1_c2 = pib_carta2;
+      break;
+
+    case 'C': 
+    case 'c':
+      resultado1 = area_carta1 > area_carta2 ? 1 : 0;
+      valor1_c1 = area_carta1;
+      valor1_c2 = area_carta2;
+      break;
+
+    case 'D': 
+    case 'd':
+      resultado1 = densidade_carta1 < densidade_carta2 ? 1 : 0;
+      valor1_c1 = densidade_carta1;
+      valor1_c2 = densidade_carta2;
+      break;
+
+    case 'E': 
+    case 'e':
+      resultado1 = pontosTuristicos_carta1 > pontosTuristicos_carta2 ? 1 : 0;
+      valor1_c1 = pontosTuristicos_carta1;
+      valor1_c2 = pontosTuristicos_carta2;
+      break;
+
+    default:
+      printf("Opção inválida!\n");
+      return 1;
+  }
+
+  // Escolha do segundo atributo
+  printf("\nEscolha o segundo atributo (diferente do anterior):\n");
+  printf("A - População\nB - PIB\nC - Área\nD - Densidade Demográfica\nE - Pontos Turísticos\n> ");
+  scanf(" %c", &opcao2);
+
+  if (opcao1 == opcao2) {
+    printf("Você escolheu o mesmo atributo duas vezes. Operação cancelada!\n");
+    return 1;
+  }
+
+  switch (opcao2) {
+    case 'A': 
+    case 'a':
+      resultado2 = populacao_carta1 > populacao_carta2 ? 1 : 0;
+      valor2_c1 = populacao_carta1;
+      valor2_c2 = populacao_carta2;
+      break;
+
+    case 'B': 
+    case 'b':
+      resultado2 = pib_carta1 > pib_carta2 ? 1 : 0;
+      valor2_c1 = pib_carta1;
+      valor2_c2 = pib_carta2;
+      break;
+
+    case 'C': 
+    case 'c':
+      resultado2 = area_carta1 > area_carta2 ? 1 : 0;
+      valor2_c1 = area_carta1;
+      valor2_c2 = area_carta2;
+      break;
+
+    case 'D': 
+    case 'd':
+      resultado2 = densidade_carta1 < densidade_carta2 ? 1 : 0;
+      valor2_c1 = densidade_carta1;
+      valor2_c2 = densidade_carta2;
+      break;
+
+    case 'E': 
+    case 'e':
+      resultado2 = pontosTuristicos_carta1 > pontosTuristicos_carta2 ? 1 : 0;
+      valor2_c1 = pontosTuristicos_carta1;
+      valor2_c2 = pontosTuristicos_carta2;
+      break;
+
+    default:
+      printf("Opção inválida!\n");
+      return 1;
+  }
+
+  // Exibir resultados
+  printf("\nResultados da comparação\n");
+  printf("Cidade 1: %s\n", cidade_carta1);
+  printf("Cidade 2: %s\n", cidade_carta2);
+  printf("Atributo 1: %.2f x %.2f -> %s venceu\n", valor1_c1, valor1_c2, resultado1 ? cidade_carta1 : cidade_carta2);
+  printf("Atributo 2: %.2f x %.2f -> %s venceu\n", valor2_c1, valor2_c2, resultado2 ? cidade_carta1 : cidade_carta2);
+
+  float soma_c1 = valor1_c1 + valor2_c1;
+  float soma_c2 = valor1_c2 + valor2_c2;
+
+  printf("\nSoma dos dois atributos:\n");
+  printf("%s: %.2f\n", cidade_carta1, soma_c1);
+  printf("%s: %.2f\n", cidade_carta2, soma_c2);
+
+  if (soma_c1 > soma_c2) {
+    printf("\n-- %s venceu a rodada! --\n", cidade_carta1);
+  } else if (soma_c1 < soma_c2) {
+    printf("\n-- %s venceu a rodada! --\n", cidade_carta2);
+  } else {
+    printf("\n### Empate! ###\n");
+  }
+  
     return 0;
 }
